@@ -1,10 +1,11 @@
 const express = require("express");
-
-// const Users = require('./users/users-model.js');
+const userRouter = require('./users/users-router');
 
 const server = express();
 
 server.use(express.json());
+
+server.use('/api/users',userRouter)
 
 server.get("/", (req, res) => {
   res.status(200).json({ api: "up" });
