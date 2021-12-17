@@ -9,6 +9,13 @@ router.get('/', (req,res, next)=> {
    })
 })
 
+router.get('/:user_id', (req,res, next)=> {
+    User.getById(req.params.user_id)
+    .then(user => {
+        res.json(user)
+    })
+ })
+
 
 
 module.exports = router

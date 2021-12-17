@@ -13,7 +13,7 @@ module.exports = {
   }
   
   function getById(id) {
-    return db('users').where('user_d',id).first()
+    return db('users').where('user_id',id).first()
   }
   
   async function insert(newUser) {
