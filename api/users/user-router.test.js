@@ -31,4 +31,21 @@ describe('Users Router', ()=> {
         expect(res.body).toHaveLength(3)
     })
  })
+ describe('[GET] /users by id ', ()=> {
+     let res
+    beforeEach(async ()=> {
+        res = await request(server).get('/api/users/1')
+    })
+     it('responds with a status code 200',()=> {
+        expect(res.status).toBe(200)
+     })
+     it('responds with user with the id provided',()=> {
+        expect(res.body).toMatchObject({
+            "Fname": "Arison", 
+            "Lname": "Arias", 
+            "email": "ari@dumb.email", 
+            "user_id": 1, 
+            "username": "Ari"})
+     })
+ })
 })
