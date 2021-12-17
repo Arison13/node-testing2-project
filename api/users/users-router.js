@@ -7,6 +7,7 @@ router.get('/', (req,res, next)=> {
    .then(user => {
        res.json(user)
    })
+   .catch(next)
 })
 
 router.get('/:user_id', (req,res, next)=> {
@@ -14,8 +15,15 @@ router.get('/:user_id', (req,res, next)=> {
     .then(user => {
         res.json(user)
     })
+    .catch(next)
  })
 
-
+router.post('/', (req,res,next)=> {
+    User.insert(req.body)
+    .then( newUser => {
+        res.status(201).json(newUser)
+    })
+    .catch(next)
+})
 
 module.exports = router
